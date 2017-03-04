@@ -3,8 +3,8 @@ package guessTheAverage;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
@@ -20,7 +20,7 @@ public class GuessTheAverage {
 
     public static void main(String[] args) throws InterruptedException {
         String title = "GuessTheAverage", EOL = System.lineSeparator();
-        int totalWon = 0, totalLost = 0, sum;
+        int totalWon = 0, totalLost = 0;
         while (true) {
             Scanner input = null;
             try {
@@ -48,16 +48,11 @@ public class GuessTheAverage {
             int tolerance = input.nextInt();
             input.close();
             Random random = new Random();
-            frame.setVisible(true);
-            sum = 0;
+            int prev = 0, sum = 0;
             giveup = false;
-            frame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    giveup = true;
-                    pause = false;
-                }
-
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.addWindowFocusListener(new WindowFocusListener() {
                 @Override
                 public void windowGainedFocus(WindowEvent e) {
                     pause = false;
@@ -71,6 +66,10 @@ public class GuessTheAverage {
             frame.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
+                    if (e.getKeyCode() == KeyEvent.VK_G) {
+                        giveup = true;
+                        pause = false;
+                    }
                     if (e.getKeyCode() == KeyEvent.VK_P) {
                         pause = !pause;
                     }
@@ -83,7 +82,12 @@ public class GuessTheAverage {
                 while (pause) {
                     Thread.sleep(500);
                 }
-                int n = random.nextInt(max - min + 1) + min;
+                int n;
+                do {
+                    n = random.nextInt(max - min + 1) + min;
+                }
+                while (n == prev);
+                prev = n;
                 sum += n;
                 label.setText("" + n);
                 frame.pack();

@@ -10,7 +10,7 @@ Try to calculate the average of the appearing numbers.
 
 * Watch the changing numbers and try to calculate the average of them.
 * Enter your guess after all numbers have appeared.
-* Give up by closing the window.
+* Give up by pressing _G_.
 * Pause the game by pressing _P_.
 * Pausing automatically when window loses focus.
 * Viewing statistics at the end.
