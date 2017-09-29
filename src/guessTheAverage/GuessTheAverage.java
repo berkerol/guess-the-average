@@ -24,7 +24,7 @@ public class GuessTheAverage {
         while (true) {
             Scanner input = null;
             try {
-                input = new Scanner(new File("GuessTheAverageConfiguration.ini"));
+                input = new Scanner(new File("GuessTheAverageConfiguration.ini"), "UTF-8");
             }
             catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, ex, title, JOptionPane.ERROR_MESSAGE);
