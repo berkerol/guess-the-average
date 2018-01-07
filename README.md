@@ -1,38 +1,17 @@
 # Guess the Average
 
-Try to calculate the average of the appearing numbers.
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/berkerol/guess-the-average/issues)
+[![semistandard](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard)
+[![license](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](https://github.com/berkerol/guess-the-average/blob/master/LICENSE)
 
-![numbers](screenshots/numbers.gif) ![guess](screenshots/guess.bmp)
+Try to calculate the average of the appearing numbers. Written in [ES6](https://www.ecma-international.org/ecma-262/6.0/).
 
-![result](screenshots/result.bmp) ![statistics](screenshots/statistics.bmp)
-
-## Gameplay & Features
-
-- Watch the changing numbers and try to calculate the average of them.
-- Enter your guess after all numbers have appeared.
-- Give up by pressing _G_.
-- Pause the game by pressing _P_.
-- Pausing automatically when window loses focus.
-- Viewing statistics at the end.
-
-There are some customization options for adding variety. You can set these options using _GuessTheAverageConfiguration.ini_ file after building (Hard-coding options into code is not necessary). This file is read before every round so you can play each round with different options.
-
-## Customizations
-
-- Specify the size of the label.
-- Set how many numbers appear in one second.
-- Specify how many numbers appear in total.
-- Set a lower and an upper limit for the numbers.
-- Specify the tolerance (average - tolerance <= guess <= average + tolerance).
-
-## Installation
-
-Built by NetBeans 8.2 (whole repository is the NetBeans project).
+[![button](play.png)](https://berkerol.github.io/guess-the-average/gta.html)
 
 ## Contribution
 
-Feel free to contribute.
+Feel free to [contribute](https://github.com/berkerol/guess-the-average/issues) according to the [semistandard rules](https://github.com/Flet/semistandard).
 
 ## Distribution
 
-You can distribute this software (jar file in the dist folder) freely under GNU GPL v3.0.
+You can distribute this software freely under [GNU GPL v3.0](https://github.com/berkerol/guess-the-average/blob/master/LICENSE).
