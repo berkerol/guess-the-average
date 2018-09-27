@@ -1,5 +1,5 @@
 # Guess the Average
 
-Try to calculate the average of the appearing numbers. Written in [ES6](https://www.ecma-international.org/ecma-262/6.0/).
+Try to calculate the average of the appearing numbers.
 
 [![button](play.png)](gta.html)
