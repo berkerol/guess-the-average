@@ -51,8 +51,8 @@ function start () {
 }
 
 function guess () {
-  let input = document.getElementById('guess');
-  let guess = parseInt(input.value);
+  const input = document.getElementById('guess');
+  const guess = parseInt(input.value);
   input.value = '';
   if (isNaN(guess)) {
     write('alert alert-danger', 'Not a number.');
@@ -76,10 +76,10 @@ function exit (className, text) {
 }
 
 function write (className, text) {
-  let child = document.createElement('div');
+  const child = document.createElement('div');
   child.className = className + ' alert-dismissible';
   child.innerHTML = '<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>' + text;
-  let parent = document.getElementById('text');
+  const parent = document.getElementById('text');
   parent.insertBefore(child, parent.firstChild);
 }
 
