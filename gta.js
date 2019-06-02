@@ -8,8 +8,9 @@ let sum;
 let total;
 let average;
 let locked = true;
-let counting = false;
 let interval;
+
+window.counting = false;
 
 document.addEventListener('keydown', keyDownHandler);
 document.getElementById('lowerLimit').value = lowerLimit;
@@ -22,7 +23,7 @@ function draw () {
     document.getElementById('number').innerHTML = '';
     window.clearInterval(interval);
     average = Math.floor(sum / totalNumbers);
-    counting = false;
+    window.counting = false;
     locked = false;
     return;
   }
@@ -36,7 +37,7 @@ function draw () {
   document.getElementById('number').innerHTML = number;
 }
 
-function start () {
+window.start = function () {
   lowerLimit = +document.getElementById('lowerLimit').value;
   upperLimit = +document.getElementById('upperLimit').value;
   totalNumbers = +document.getElementById('totalNumbers').value;
@@ -45,10 +46,10 @@ function start () {
   sum = 0;
   total = 0;
   locked = true;
-  counting = true;
+  window.counting = true;
   interval = window.setInterval(draw, 1000 / numbersPerSecond);
   document.getElementById('text').innerHTML = '';
-}
+};
 
 function guess () {
   const input = document.getElementById('guess');
@@ -65,9 +66,9 @@ function guess () {
   }
 }
 
-function giveUp () {
+window.giveUp = function () {
   exit('alert alert-danger', average + ' is the average.');
-}
+};
 
 function exit (className, text) {
   write(className, text);
