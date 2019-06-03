@@ -1,7 +1,11 @@
-let lowerLimit = 80;
-let upperLimit = 120;
-let totalNumbers = 6;
-let numbersPerSecond = 2;
+const defaultLowerLimit = 80;
+const defaultUpperLimit = 120;
+const defaultTotalNumbers = 6;
+const defaultNumbersPerSecond = 2;
+let lowerLimit = defaultLowerLimit;
+let upperLimit = defaultUpperLimit;
+let totalNumbers = defaultTotalNumbers;
+let numbersPerSecond = defaultNumbersPerSecond;
 
 let prev;
 let sum;
@@ -12,11 +16,16 @@ let interval;
 
 window.counting = false;
 
+resetInputs();
 document.addEventListener('keydown', keyDownHandler);
-document.getElementById('lowerLimit').value = lowerLimit;
-document.getElementById('upperLimit').value = upperLimit;
-document.getElementById('totalNumbers').value = totalNumbers;
-document.getElementById('numbersPerSecond').value = numbersPerSecond;
+document.addEventListener('keyup', keyUpHandler);
+
+function resetInputs () {
+  document.getElementById('lowerLimit').value = lowerLimit;
+  document.getElementById('upperLimit').value = upperLimit;
+  document.getElementById('totalNumbers').value = totalNumbers;
+  document.getElementById('numbersPerSecond').value = numbersPerSecond;
+}
 
 function draw () {
   if (total === totalNumbers) {
@@ -88,5 +97,15 @@ function keyDownHandler (e) {
   if (e.keyCode === 13 && !locked) {
     e.preventDefault();
     guess();
+  }
+}
+
+function keyUpHandler (e) {
+  if (e.keyCode === 82) {
+    lowerLimit = defaultLowerLimit;
+    upperLimit = defaultUpperLimit;
+    totalNumbers = defaultTotalNumbers;
+    numbersPerSecond = defaultNumbersPerSecond;
+    resetInputs();
   }
 }
