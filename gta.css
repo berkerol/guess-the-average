@@ -12,7 +12,6 @@ body {
 
 #number {
   font-size: 5em;
-  text-align: center;
 }
 
 input[type="number"] {
