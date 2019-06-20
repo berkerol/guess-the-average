@@ -16,6 +16,31 @@ let interval;
 
 window.counting = false;
 
+const form = document.getElementsByTagName('form')[0];
+const menu = document.getElementById('menu');
+const rowClass = 'form-row justify-content-center';
+const colClass = 'form-group col-5 col-md-4 col-lg-3';
+for (const row of [[['Lower Limit', 'lowerLimit', '1', '99999'], ['Total Numbers', 'totalNumbers', '3', '999']], [['Upper Limit', 'upperLimit', '1', '99999'], ['Numbers/Second', 'numbersPerSecond', '1', '9']]]) {
+  const divRow = document.createElement('div');
+  divRow.className = rowClass;
+  for (const col of row) {
+    const label = document.createElement('label');
+    label.htmlFor = col[1];
+    label.innerHTML = col[0];
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.className = 'form-control';
+    input.id = col[1];
+    input.min = col[2];
+    input.max = col[3];
+    const divCol = document.createElement('div');
+    divCol.className = colClass;
+    divCol.appendChild(label);
+    divCol.appendChild(input);
+    divRow.appendChild(divCol);
+  }
+  form.insertBefore(divRow, menu);
+}
 resetInputs();
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
