@@ -1,3 +1,4 @@
+/* global createNumberRow createMenuRow write exit keyDownHandler keyUpHandler */
 const defaultLowerLimit = 80;
 const defaultUpperLimit = 120;
 const defaultTotalNumbers = 6;
@@ -11,36 +12,23 @@ let prev;
 let sum;
 let total;
 let average;
-let locked = true;
 let interval;
 
+window.locked = true;
 window.counting = false;
 
-const form = document.getElementsByTagName('form')[0];
-const menu = document.getElementById('menu');
+const form = document.getElementById('form');
 const rowClass = 'form-row justify-content-center';
 const colClass = 'form-group col-5 col-md-4 col-lg-3';
-for (const row of [[['Lower Limit', 'lowerLimit', '1', '99999'], ['Total Numbers', 'totalNumbers', '3', '999']], [['Upper Limit', 'upperLimit', '1', '99999'], ['Numbers/Second', 'numbersPerSecond', '1', '9']]]) {
-  const divRow = document.createElement('div');
-  divRow.className = rowClass;
-  for (const col of row) {
-    const label = document.createElement('label');
-    label.htmlFor = col[1];
-    label.innerHTML = col[0];
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.className = 'form-control';
-    input.id = col[1];
-    input.min = col[2];
-    input.max = col[3];
-    const divCol = document.createElement('div');
-    divCol.className = colClass;
-    divCol.appendChild(label);
-    divCol.appendChild(input);
-    divRow.appendChild(divCol);
-  }
-  form.insertBefore(divRow, menu);
-}
+const numberClass = 'form-group col-3 col-lg-2';
+const buttonClass = 'col-7 col-md-5 col-lg-4 my-auto';
+const firstRow = [['Lower Limit', 'lowerLimit', '1', '99999'], ['Total Numbers', 'totalNumbers', '3', '999']];
+const secondRow = [['Upper Limit', 'upperLimit', '1', '99999'], ['Numbers/Second', 'numbersPerSecond', '1', '9']];
+const numberRow = ['Guess', 'guess', '1', '99999'];
+const buttonRow = [['success', 'if(!locked)window.guess()', 'g', 'search', '<u>G</u>uess'], ['danger', 'if(!locked)giveUp()', 'u', 'times', 'Give <u>U</u>p'], ['info', 'if(!counting)start()', 's', 'play', '<u>S</u>tart']];
+form.appendChild(createNumberRow(rowClass, colClass, firstRow));
+form.appendChild(createNumberRow(rowClass, colClass, secondRow));
+form.appendChild(createMenuRow(rowClass, numberClass, buttonClass, numberRow, buttonRow));
 resetInputs();
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
@@ -62,7 +50,7 @@ function draw () {
     window.clearInterval(interval);
     average = Math.floor(sum / totalNumbers);
     window.counting = false;
-    locked = false;
+    window.locked = false;
     return;
   }
   let number;
@@ -83,13 +71,13 @@ window.start = function () {
   prev = 0;
   sum = 0;
   total = 0;
-  locked = true;
+  window.locked = true;
   window.counting = true;
   interval = window.setInterval(draw, 1000 / numbersPerSecond);
   document.getElementById('text').innerHTML = '';
 };
 
-function guess () {
+window.guess = function () {
   const input = document.getElementById('guess');
   const guess = parseInt(input.value);
   input.value = '';
@@ -102,35 +90,8 @@ function guess () {
       exit('alert alert-warning', average + ' is the average.');
     }
   }
-}
+};
 
 window.giveUp = function () {
   exit('alert alert-danger', average + ' is the average.');
 };
-
-function exit (className, text) {
-  write(className, text);
-  locked = true;
-  write('alert alert-info', 'Restart the game!');
-}
-
-function write (className, text) {
-  const child = document.createElement('div');
-  child.className = className + ' alert-dismissible fade show';
-  child.innerHTML = '<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>' + text;
-  const parent = document.getElementById('text');
-  parent.insertBefore(child, parent.firstChild);
-}
-
-function keyDownHandler (e) {
-  if (e.keyCode === 13 && !locked) {
-    e.preventDefault();
-    guess();
-  }
-}
-
-function keyUpHandler (e) {
-  if (e.keyCode === 82) {
-    resetInputs();
-  }
-}

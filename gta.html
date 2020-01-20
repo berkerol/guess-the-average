@@ -15,28 +15,16 @@
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   <script async src="https://kit.fontawesome.com/a1c4b21e48.js"></script>
-  <script async src="gta.js"></script>
   <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script defer src="https://berkerol.github.io/libraries/form.js"></script>
+  <script defer src="gta.js"></script>
 </head>
 
 <body>
   <div class="container">
-    <form class="mt-4">
-      <div class="form-row justify-content-center" id="menu">
-        <div class="form-group col-3 col-lg-2">
-          <label for="guess" id="guessLabel">Guess</label>
-          <input type="number" class="form-control" id="guess" min="1" max="99999">
-        </div>
-        <div class="col-7 col-md-5 col-lg-4 my-auto">
-          <div class="btn-group">
-            <button type="button" class="btn btn-success" onclick="if(!locked)window.guess()" accesskey="g"><i class="fas fa-search"></i> <u>G</u>uess</button>
-            <button type="button" class="btn btn-danger" onclick="if(!locked)giveUp()" accesskey="u"><i class="fas fa-times"></i> Give <u>U</u>p</button>
-            <button type="button" class="btn btn-info" onclick="if(!counting)start()" accesskey="s"><i class="fas fa-play"></i> <u>S</u>tart</button>
-          </div>
-        </div>
-      </div>
+    <form class="mt-4" id="form">
     </form>
     <div class="d-flex justify-content-center">
       <p class="font-weight-bold" id="number"></p>
