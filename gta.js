@@ -2,10 +2,10 @@ const defaultLowerLimit = 80;
 const defaultUpperLimit = 120;
 const defaultTotalNumbers = 6;
 const defaultNumbersPerSecond = 2;
-let lowerLimit = defaultLowerLimit;
-let upperLimit = defaultUpperLimit;
-let totalNumbers = defaultTotalNumbers;
-let numbersPerSecond = defaultNumbersPerSecond;
+let lowerLimit;
+let upperLimit;
+let totalNumbers;
+let numbersPerSecond;
 
 let prev;
 let sum;
@@ -46,6 +46,10 @@ document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
 
 function resetInputs () {
+  lowerLimit = defaultLowerLimit;
+  upperLimit = defaultUpperLimit;
+  totalNumbers = defaultTotalNumbers;
+  numbersPerSecond = defaultNumbersPerSecond;
   document.getElementById('lowerLimit').value = lowerLimit;
   document.getElementById('upperLimit').value = upperLimit;
   document.getElementById('totalNumbers').value = totalNumbers;
@@ -127,10 +131,6 @@ function keyDownHandler (e) {
 
 function keyUpHandler (e) {
   if (e.keyCode === 82) {
-    lowerLimit = defaultLowerLimit;
-    upperLimit = defaultUpperLimit;
-    totalNumbers = defaultTotalNumbers;
-    numbersPerSecond = defaultNumbersPerSecond;
     resetInputs();
   }
 }
