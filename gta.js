@@ -1,4 +1,4 @@
-/* global createNumberRow createMenuRow write exit keyDownHandler keyUpHandler */
+/* global createNumberRow createMenuRow createAlert exit keyDownHandler keyUpHandler */
 const defaultLowerLimit = 80;
 const defaultUpperLimit = 120;
 const defaultTotalNumbers = 6;
@@ -82,16 +82,16 @@ window.guess = function () {
   const guess = parseInt(input.value);
   input.value = '';
   if (isNaN(guess)) {
-    write('alert alert-danger', 'Not a number.');
+    createAlert('danger', 'Not a number.');
   } else {
     if (average === guess) {
-      exit('alert alert-success', guess + ' is correct.');
+      exit('success', guess + ' is correct.');
     } else {
-      exit('alert alert-warning', average + ' is the average.');
+      exit('warning', average + ' is the average.');
     }
   }
 };
 
 window.giveUp = function () {
-  exit('alert alert-danger', average + ' is the average.');
+  exit('danger', average + ' is the average.');
 };
