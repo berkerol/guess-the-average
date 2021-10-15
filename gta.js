@@ -18,9 +18,9 @@ window.locked = true;
 window.counting = false;
 
 const form = document.getElementById('form');
-const rowClass = 'form-row justify-content-center';
-const colClass = 'form-group col-5 col-md-4 col-lg-3';
-const numberClass = 'form-group col-3 col-lg-2';
+const rowClass = 'row justify-content-center';
+const colClass = 'col-5 col-md-4 col-lg-3 mb-3';
+const numberClass = 'col-3 col-lg-2 mb-3';
 const buttonClass = 'col-7 col-md-5 col-lg-4 my-auto';
 const firstRow = [['Lower Limit', 'lowerLimit', '1', '99999'], ['Total Numbers', 'totalNumbers', '3', '999']];
 const secondRow = [['Upper Limit', 'upperLimit', '1', '99999'], ['Numbers/Second', 'numbersPerSecond', '1', '9']];
