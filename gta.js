@@ -1,4 +1,4 @@
-/* global createNumberRow createMenuRow createAlert exit keyDownHandler keyUpHandler */
+/* global createNumberCol createNumberRow createButtonGroupRow createRow createAlert exit keyDownHandler keyUpHandler */
 const defaultLowerLimit = 80;
 const defaultUpperLimit = 120;
 const defaultTotalNumbers = 6;
@@ -28,7 +28,7 @@ const numberRow = ['Guess', 'guess', '1', '99999'];
 const buttonRow = [['success', 'if(!locked)window.guess()', 'g', 'search', '<u>G</u>uess'], ['danger', 'if(!locked)giveUp()', 'u', 'times', 'Give <u>U</u>p'], ['info', 'if(!counting)start()', 's', 'play', '<u>S</u>tart']];
 form.appendChild(createNumberRow(rowClass, colClass, firstRow));
 form.appendChild(createNumberRow(rowClass, colClass, secondRow));
-form.appendChild(createMenuRow(rowClass, numberClass, buttonClass, numberRow, buttonRow));
+form.appendChild(createRow(rowClass, [createNumberCol(numberClass, ...numberRow), createButtonGroupRow(buttonClass, 'btn-group', buttonRow)]));
 resetInputs();
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
